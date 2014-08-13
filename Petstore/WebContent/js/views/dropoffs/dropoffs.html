@@ -1,0 +1,32 @@
+<div>
+    <h2 class="sub-header">Drop offs:</h2>
+<!-- to do     
+	Filter:
+    <select ng-model="" ng-options="">
+    </select> -->
+    
+    <div class="table-responsive">
+            <span ng-show='contracts.length < 1'> There aren't any scheduled drop offs </span>
+            <table ng-show='contracts.length > 0' class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Animal name</th>
+                  <th>Submission #</th>
+                  <th>Drop off date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="contract in contracts"
+                    ng-click="goToFacilityAssignment(contract.submission.id)">
+                  <td><img class="icon" src="/Petstore/images/{{contract.submission.animal.image}}"></td>
+                  <td>{{contract.submission.animal.name}}</td>
+                  <td>{{contract.submission.id}}</td>
+                  <td>{{contract.dropOffDate | date:'dd-MMMM-yyyy' }}</td>
+                  
+                </tr>
+              </tbody>
+            </table>
+     </div>
+
+</div>

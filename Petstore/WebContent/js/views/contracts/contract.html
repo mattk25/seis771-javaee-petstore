@@ -1,0 +1,38 @@
+<div>
+	<div ng-show="isAdoption()">
+		this works.
+	</div>
+	<div class="row placeholders">
+		<div class="col-xs-6 col-sm-6 placeholder">
+			<span>{{contract.fullContractText}}</span>
+		</div>
+	</div>
+
+	<div>
+		<div ng-show="!isAdoption()">
+		<label for="dropOffDate">Drop off date:</label> <input type="text"
+			datepicker-popup='MM/dd/yyyy' ng-model="dropOffDate" is-open="opened"
+			min="minDate" ng-required="true" close-text="Close" />
+		</div>
+		<div ng-show="isAdoption()" >
+		<label ng-show="isAdoption()" for="pickUpDate">Pick Up date:</label> <input type="text"
+			datepicker-popup='MM/dd/yyyy' ng-model="dropOffDate" is-open="opened"
+			min="minDate" ng-required="true" close-text="Close" />
+		</div>
+		<button class="btn btn-small" ng-click="open($event)">
+			<i class="glyphicon glyphicon-calendar"></i>
+		</button>
+
+	</div>
+
+	<div class="navbar-collapse collapse">
+		<form class="navbar-form navbar-left">
+			<input type="checkbox" class="form-control" ng-model="agree" > <span> I agree to the contract </span> 
+			<br>
+		    <input type="button" class="form-control" ng-disabled="!agree" ng-click="submitContract()" value="Submit">
+		</form>
+	</div>
+
+
+
+</div>

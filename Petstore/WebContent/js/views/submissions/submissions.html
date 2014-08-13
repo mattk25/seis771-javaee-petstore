@@ -1,0 +1,74 @@
+<div>
+    <h2 class="sub-header">Animal Submissions:</h2>
+    <div ng-show='filteredStatuses.length >= 1'>
+        Filter:
+	    <select ng-model="stateFilter" ng-options="filteredStatus.status for filteredStatus in filteredStatuses">
+	    </select>
+    </div>
+
+    
+<!--     Sort:
+    <select ng-model="sortItem.store" ng-options="item.name for item in sortOptions.stores">
+    </select> -->
+    <div class="table-responsive">
+            <span ng-show='submissions.length < 1'> {{noSubmissionMessage}} </span>
+            <table ng-show='submissions.length >= 1' class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Animal name</th>
+                  <th>Submission #</th>
+                  <th>Status</th>
+                  <th>Submit Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="submission in submissions | filter:stateFilter"
+                    ng-click="goToSubmission(submission.id)">
+                  <td><img class="icon" src="/Petstore/images/{{submission.animal.image}}"></td>
+                  <td>{{submission.animal.name}}</td>
+                  <td>{{submission.id}}</td>
+                  <td>{{submission.status}}</td>
+                  <td>{{submission.submitDate | date:'dd-MMMM-yyyy' }}</td>
+                  
+                </tr>
+              </tbody>
+            </table>
+     </div>
+
+</div>
+
+<div ng-show='adoptions'>
+    <h2 class="sub-header">Adoption submissions:</h2>
+<!--     <div ng-show='filteredStatuses.length >= 1'>
+        Filter:
+	    <select ng-model="stateFilter" ng-options="filteredStatus.status for filteredStatus in filteredStatuses">
+	    </select>
+    </div> -->
+
+    <div class="table-responsive">
+            <span ng-show='adoptions.length < 1'> {{noSubmissionMessage}} </span>
+            <table class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th>Animal name</th>
+                  <th>Adoption #</th>
+                  <th>Status</th>
+                  <th>Submit Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="adoption in adoptions"
+                    ng-click="goToAdoption(adoption.id)">
+                  <td>{{adoption.requestedAnimal.name}}</td>
+                  <td>{{adoption.id}}</td>
+                  <td>{{adoption.status}}</td>
+                  <td>{{adoption.submitDate | date:'dd-MMMM-yyyy' }}</td>
+                  
+                </tr>
+              </tbody>
+            </table>
+     </div>
+
+</div>
+

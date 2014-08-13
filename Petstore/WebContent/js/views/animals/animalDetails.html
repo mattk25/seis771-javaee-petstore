@@ -1,0 +1,39 @@
+<div>
+    <h1> {{animal.name}} </h1>
+	<div class="row placeholders">
+		<div class="col-sm-2 placeholder">
+			<img class="img-responsive"
+				src="/Petstore/images/{{animal.image}}">
+		</div>
+		
+		
+
+		<div class="col-sm-3">
+			<ul class="list-group">
+			    <li class="active list-group-item"> <b>Animal Information </b></li>
+				<li class="list-group-item"><span class="badge badge pull-right">{{animal.name}}</span> Name:</li>
+				<li class="list-group-item"><span class="badge badge pull-right">{{animal.age}}</span> Age:</li>
+				<li class="list-group-item"><span class="badge">{{animal.color}}</span> Color:</li>
+				<li class="list-group-item"><span class="badge">{{animal.specie.name}}</span> Species:</li>
+				<li class="list-group-item"><span class="badge">{{animal.breed.name}}</span> Breed:</li>
+				<li class="list-group-item"><span class="badge">{{animal.sex}}</span> Sex:</li>
+
+			</ul>
+		</div>
+		
+		<div ng-show="animal.medicalRecord" class="col-sm-3">
+			<ul class="list-group">
+			    <li class="list-group-item active"> <b>Medical Information </b></li>
+				<li class="list-group-item"><span class="badge">{{animal.medicalRecord.lastVisit | date:'dd-MMMM-yyyy'}}</span> Last visit:</li>
+				<li class="list-group-item"><span class="badge">{{animal.medicalRecord.vetName}}</span> Veterinarian:</li>
+				<li ng-show="animal.medicalRecord.vaccines.length > 0" class="list-group-item"><span ng-repeat="item in animal.medicalRecord.vaccines" class="badge">{{item.vaccine.name}}</span> Vaccines:</li>
+			</ul>
+		</div>
+		
+	</div>
+	<button ng-show="isLoggedIn && !adoptionSubmitted" class="btn btn-mini btn-primary" ng-click="adopt()">Adopt {{animal.name}}</button>
+	<span ng-hide="isLoggedIn" class="label label-info"> Login to submit an adoption request for this animal</span>
+	<span ng-show="adoptionSubmitted"> Congratulations! your adoption request has been submitted</span>
+	<span ng-show="failureMessage"> {{failureMessage}} </span>
+
+</div>

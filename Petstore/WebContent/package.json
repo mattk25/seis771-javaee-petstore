@@ -1,0 +1,10 @@
+{
+    "devDependencies": {
+    "karma": "~0.10",
+    "protractor": "~0.20.1"
+    },
+    
+   "scripts": {
+    "postinstall": "webdriver-manager update"
+  }
+}

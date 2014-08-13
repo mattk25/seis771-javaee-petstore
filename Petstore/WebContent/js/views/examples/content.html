@@ -1,0 +1,15 @@
+<button data-ng-click='handleProgress()'> start progress!</button>
+<button ng-cloack ng-show='canStop' ng-click='stopProgress()'> stop!</button>
+<br>
+<br>
+<progressbar animate="false" value="myprogress" type="success"><b>{{myprogress}}%</b></progressbar>
+<progressbar max="100" value="myprogress"><span style="color:black; white-space:nowrap;">{{myprogress}} / {{100}}</span>
+</progressbar>
+<br>
+<button data-ng-click="visit()"> visit</button>
+<input ng-show='mydata' ng-model='query' placeholder="type to filter results below">
+<ul ng-show='mydata'>
+    <li ng-repeat='obj in mydata | filter:query'> {{obj.name}}</li>
+</ul>
+<br>
+<div class="gridStyle" ng-grid="gridOptions"></div>

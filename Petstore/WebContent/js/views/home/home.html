@@ -1,0 +1,9 @@
+
+
+<div class="row">
+	<div ng-repeat="animal in animals" ng-click="goToAnimal(animal.id)" class="placeholder col-md-2 hoverDiv">
+		<img class="img-responsive" src="/Petstore/images/{{animal.image}}">
+		<h4 class="text-centered">{{animal.name}}</h4>
+		<span class="text-centered text-muted">{{animal.age}}</span>
+	</div>
+</div>

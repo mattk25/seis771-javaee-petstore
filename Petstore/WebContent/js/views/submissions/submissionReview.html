@@ -1,0 +1,74 @@
+<div>
+
+	<div class="row placeholders">
+		<div class="col-sm-2 placeholder">
+			<img class="img-responsive"
+				src="/Petstore/images/{{submission.animal.image}}">
+		</div>
+
+		<div class="col-sm-3">
+			<ul class="list-group">
+			    <li class="active list-group-item"> <b>Animal Information </b></li>
+				<li class="list-group-item"><span class="badge badge pull-right">{{submission.animal.name}}</span> Name:</li>
+				<li class="list-group-item"><span class="badge badge pull-right">{{submission.animal.age}}</span> Age:</li>
+				<li class="list-group-item"><span class="badge">{{submission.animal.color}}</span> Color:</li>
+				<li class="list-group-item"><span class="badge">{{submission.animal.specie.name}}</span> Species:</li>
+				<li class="list-group-item"><span class="badge">{{submission.animal.breed.name}}</span> Breed:</li>
+				<li class="list-group-item"><span class="badge">{{submission.animal.sex}}</span> Sex:</li>
+				<li class="list-group-item"><span class="badge">{{submission.submissionContraints}}</span> Constrains:</li>
+				<li class="list-group-item"><span class="badge">{{submission.submitDate | date:'dd-MMMM-yyyy' }}</span> Submit date:</li>
+
+			</ul>
+		</div>
+		
+		<div ng-show="submission.animal.medicalRecord" class="col-sm-3">
+			<ul class="list-group">
+			    <li class="list-group-item active"> <b>Medical Information </b></li>
+				<li class="list-group-item"><span class="badge">{{submission.animal.medicalRecord.lastVisit | date:'dd-MMMM-yyyy'}}</span> Last visit:</li>
+				<li class="list-group-item"><span class="badge">{{submission.animal.medicalRecord.vetName}}</span> Veterinarian:</li>
+				<li ng-show="submission.animal.medicalRecord.vaccines.length > 0" class="list-group-item"><span ng-repeat="item in submission.animal.medicalRecord.vaccines" class="badge">{{item.vaccine.name}}</span> Vaccines:</li>
+			</ul>
+		</div>
+		
+		
+		<div ng-show="isAdmin" class="col-sm-3">
+			<ul class="list-group">
+			    <li class="list-group-item active"> <b>Submitter</b></li>
+				<li class="list-group-item"><span class="badge">{{submission.person.firstname}}</span> First Name:</li>
+				<li class="list-group-item"><span class="badge">{{submission.person.lastName}}</span> Last Name:</li>
+				<li class="list-group-item"><span class="badge">{{submission.person.email}}</span> Email:</li>
+				<li class="list-group-item"><span class="badge">{{submission.person.phoneNumber}}</span> Phone Number:</li>
+			</ul>
+		</div>
+		
+		<div ng-hide="isAdmin" class="col-sm-3">
+			<ul class="list-group">
+			    <li class="list-group-item active"> <b>Reviewer</b></li>
+				<li ng-hide='submission.staff' class="list-group-item ">not assigned yet</li>
+				<li ng-show='submission.staff' class="list-group-item"><span class="badge">{{submission.staff.firstName}}</span> First Name:</li>
+				<li ng-show='submission.staff' class="list-group-item"><span class="badge">{{submission.staff.lastName}}</span> Last Name:</li>
+				<li ng-show='submission.staff' class="list-group-item"><span class="badge">{{submission.staff.email}}</span> Email:</li>
+				<li ng-show='submission.staff' class="list-group-item"><span class="badge">{{submission.staff.phoneNumber}}</span> Phone Number:</li>
+			</ul>
+		</div>
+	</div>
+
+
+	<span class="pull-left">Status: {{submission.status}}</span> <br> <br>
+
+	<div ng-show="isAdmin">
+		<form class="navbar-form navbar-left">
+			<label>Comments:</label> <br>
+			<textarea class="form-control" ng-model="submission.staffComments"></textarea>
+			<br><br>
+			<input type="button" class="form-control"
+				ng-disabled="!submission.staffComments"
+				ng-click="approveSubbmission()" value="Approve"> 
+			<input
+				type="button" class="form-control"
+				ng-disabled="!submission.staffComments"
+				ng-click="rejectSubmission()" value="Reject">
+		</form>
+	</div>
+
+</div>

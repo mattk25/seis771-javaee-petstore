@@ -1,0 +1,31 @@
+<div>
+<h3>Select A Facility...</h3>
+
+	<h4>For Submission ID...{{submission.id}} </h4>
+
+    <div id="mytable" class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Facility ID</th>
+                  <th>Facility name</th>
+                  <th>Open Cages</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="facility in facilities"
+                    ng-click="setSelected(this)" class={{selected}}>
+                  <td>{{facility.id}}</td>
+                  <td>{{facility.facilityName}}</td>
+                  <td>{{facility.maxCages - facility.cageCount}}</td>
+                </tr>
+              </tbody>
+            </table>
+     </div>
+     
+     <button class="btn btn-default" ng-disabled="!submission.facility" ng-click="updateFacility()">Assign Animal To Facility</button>
+     
+     </div>
+
+     
+     

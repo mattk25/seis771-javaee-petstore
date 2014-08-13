@@ -1,0 +1,60 @@
+<script>
+	function Ctrl($scope) {
+		$scope.gaveFood = false;
+		$scope.gaveWater = false;
+		$scope.needsVetCheck = false;
+	}
+</script>
+
+<h1>Daily Animal Care</h1>
+<div id="subForms" class="forms">
+	<fieldset>
+		<ol>
+			<li id="firstname" class="form"><label for="petId">Enter
+					Animal ID: </label> <input id="petId" ng-model="careRecord.animal.id" required>
+					     <button class="padding-left:50px btn btn-mini btn-primary" ng-click="updateTable()" ng-disabled="subForms.$invalid">View Recent Care</button>
+			<br /></li>
+			<li id="gaveFood" class="form">
+				<label for="gaveFood"> Gave Food? </label>  
+				<input	id="gaveFood" type=checkbox value="false" ng-model="careRecord.gaveFood"/></li>
+			<li id="gaveWater" class="form">
+				<label for="gaveFood"> Gave Water? </label> 
+				<input id="gaveWater" ng-model="careRecord.gaveWater" type=checkbox value="false" /></li>
+						<li>
+				<label for="needVet">Needs Vet?</label><input id="needVet" ng-model="animal.records[0].needVetCheck" type=checkbox value="false"/>
+			</li>
+			<li><label> Comments:</label> <textarea class="form-control"
+					ng-model="careRecord.comment"></textarea></li>
+			<br />
+			<br />
+
+			
+			<button class="btn btn-default" ng-click="createRecord()">Submit New Record</button>
+
+		</ol>
+	</fieldset>
+</div>
+
+<br></br>
+      <h1>Recent Animal Care</h1>
+      <div class="table-responsive">
+            <table class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th>Comment</th>
+                  <th>Fed</th>
+                  <th>Watered</th>
+                  <th>Care Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="record in records">
+                  <td>{{record.comment}}</td>
+                  <td>{{record.gaveFood}}</td>
+                  <td>{{record.gaveWater}}</td>
+                  <td>{{record.recordTimeStamp | date:'dd-MMMM-yyyy' }}</td>
+                </tr>
+              </tbody>
+            </table>
+     </div>
+

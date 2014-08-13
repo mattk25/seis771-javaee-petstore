@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!-- layout is inspired from http://getbootstrap.com/examples/dashboard/ -->
+<html>
+<head>
+    <title>Pet Store</title>
+    <link rel="shortcut icon" href="images/favicon.ico"/>
+    <link href="style/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style/ng-grid.css" rel="stylesheet">
+    <link href="style/style.css" rel="stylesheet">
+</head>
+<body>
+<!--
+    We have three views (header, sidebar and content). header and sidebar are
+    views that will be shared within all states. (currently we only have home & example states).
+    you can change the template of header or sidebar in the following template files:
+
+    js/views/header/header.html
+    js/views/sidebar/sidebar/html
+
+    please don't modify
+
+    js/views/mainEntry.html or js/states/mainEntry.js
+ -->
+<div class="navbar navbar-inverse navbar-fixed-top" ui-view='header'></div>
+<div class="container-fluid" ui-view='mainEntry'></div>
+
+
+<script data-main="js/main" src="lib/require.js"></script>
+</body>
+</html>

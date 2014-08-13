@@ -1,0 +1,16 @@
+<div class="col-sm-3 col-md-2 sidebar">
+
+	<ul ng-show="isAdmin" class="nav nav-sidebar">
+		<li><a ui-sref="mainState.submissions">View Submissions</a></li>
+		<li><a ui-sref="mainState.dropOffs">View Scheduled Drop Offs</a></li>
+		<li><a ui-sref="mainState.adoptions">View Adoptions</a></li>
+	</ul>
+	
+    <ul class="nav nav-sidebar">
+        <li><a ui-sref="mainState.home">Adopt a pet</a></li>
+        <li><a ui-sref="mainState.submission">New Submission</a></li>
+        <li ng-show="isLoggedIn"><a ui-sref="mainState.submissions({ userId: userId })">My Submissions</a></li>
+        <li ng-show="isLoggedIn"><a ui-sref="mainState.animalCare">Animal Care</a></li>
+        <li><a onclick="alert('not implemented yet')">Report abuse</a></li>
+    </ul>
+</div>

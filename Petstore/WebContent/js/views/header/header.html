@@ -1,0 +1,16 @@
+<div class="header navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Pets Store</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <span class='navbar-left label' ng-show="userId"> Welcome : {{user.userName}} </span>
+          <form class="navbar-form navbar-right">
+            <input type="button"  class="form-control" ng-hide="isLoggedIn" ng-click="loginUser()" value="Login">
+	        <input type="button" class="form-control"  ng-show="isLoggedIn" ng-click="logoutUser()" value="Logout">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </div>
+      </div>
+      
+</div>

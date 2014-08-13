@@ -1,0 +1,86 @@
+
+  <h3>Your Pet!</h3>
+  <div id="subForms" class="forms">
+          <fieldset>
+              <ol>
+                  <li id="firstname" class="form">
+                      <label for="petname">Name: </label> <input ng-model="submission.animal.name"><br /><br />
+                  </li>
+                  <li>
+                      <label>Age:</label>
+                      <input type="text" ng-model="submission.animal.age"><br /><br />                   
+                  </li>
+                  <li>
+                      <label>Color: </label>
+                      <input type="text" ng-model="submission.animal.color"><br /><br />
+                  </li>
+				<div class="btn-group">
+				  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+				    <b>Species:</b> {{submission.animal.specie.name}} <span class="caret"></span>
+				  </button>
+				  <ul class="dropdown-menu" role="menu">
+					   <li ng-repeat="s in species">
+					     <a ng-click="resolveSpeciesAndVaccines(s)">{{s.name}}</a>
+					   </li>
+				  </ul>
+				</div>
+				<div class="btn-group">
+				  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+				    <b>Breed:</b> {{submission.animal.breed.name}} <span class="caret"></span>
+				  </button>
+				  <ul class="dropdown-menu" role="menu">
+					   <li ng-repeat="b in breeds">
+					     <a ng-click="submission.animal.breed=b">{{b.name}}</a>
+					   </li>
+				  </ul>
+				</div>
+				
+				<div class="btn-group">
+				  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+				    <b>Sex:</b> {{submission.animal.sex}} <span class="caret"></span>
+				  </button>
+				  <ul class="dropdown-menu" role="menu">
+					   <li ng-repeat="s in sexes">
+					     <a ng-click="submission.animal.sex=s">{{s}}</a>
+					   </li>
+				  </ul>
+				</div>
+                  
+                  <li>
+                  	<label> Constraints:</label>
+                  	<textarea class="form-control" ng-model="submission.submissionContraints"></textarea>
+                  </li>
+                  
+                  <li id="status" class="form">
+                      <label for="petstatus">Status: </label>
+                      <label>{{submission.status}}</label><br /><br />
+                  </li>
+              </ol>
+          </fieldset>
+  </div>
+ 
+  <h3>Medical Information</h3>
+  <div id="medForms" class="forms">
+      <fieldset>
+          <ol>
+              <li>
+                  <label for="fullname">Veterinarian:</label>
+                  <input type="text" ng-model="submission.animal.medicalRecord.vetName"><br><br>
+              </li>
+              <li id="lastvisit" class="form">
+              	<label for="petlastvisit">Last Visit:</label>
+	              <input type="text" datepicker-popup='MM/dd/yyyy' ng-model="submission.animal.medicalRecord.lastVisit" 
+	              is-open="opened" date-disabled="disabled(date, mode)" max="maxDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+
+	                <button class="btn btn-small" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button> 
+	                <br><br>
+
+              <label for="vaccines">Vaccines:</label>
+              <label ng-repeat="vaccine in vaccines">
+              	<input type="checkbox" checklist-model="selectedVaccines" checklist-value="vaccine"> {{vaccine.name}}
+              </label>
+              </ol>
+      </fieldset>
+  </div>
+  
+  <button class="btn btn-default" ng-click="submiSubmission()">Submit</button>

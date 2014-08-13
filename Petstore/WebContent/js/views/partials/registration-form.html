@@ -1,0 +1,13 @@
+<form name="registrationForm">
+    <input ng-model="user.userName" type="text" class="form-control" placeholder="User Name" required="" autofocus="">
+    <input ng-model="user.password" type="password" class="form-control" placeholder="Password" required="">
+    <input ng-model="user.lastName" type="text" class="form-control" placeholder="Last Name" required="" autofocus="">
+    <input ng-model="user.firstName" type="text" class="form-control" placeholder="First Name" required="" autofocus="">
+    <input ng-model="user.phoneNumber" type="tel" class="form-control" placeholder="Phone" required="" autofocus="">
+    <input ng-model="user.email" type="email" class="form-control" placeholder="Email" required="" autofocus="">
+    <input ng-model="user.address.street" type="text" class="form-control" placeholder="Street" required="">
+    <input ng-model="user.address.city" type="text" class="form-control" placeholder="City" required="">
+    <input ng-model="user.address.state" type="text" class="form-control" placeholder="State" required="">
+    <input ng-model="user.address.zipCode" type="number" class="form-control" placeholder="Zip code" required="">
+    <button class="btn btn-lg btn-primary btn-block" ng-click="register()">Register</button>
+</form>
